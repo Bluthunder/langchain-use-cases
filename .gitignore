@@ -23,3 +23,5 @@ venv.bak/
 .spyproject
 
 .python-version
+
+.idea/*
