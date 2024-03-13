@@ -10,6 +10,7 @@ openai = "*"
 langchain-openai = "*"
 requests = "*"
 langchainhub = "*"
+google-search-results = "*"
 
 [dev-packages]
 

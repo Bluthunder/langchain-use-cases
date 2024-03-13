@@ -39,6 +39,6 @@ class CustomSerpApiWrapper(SerpAPIWrapper):
 
 def get_profile_url(name: str) -> str:
     """Searches for linkedin Profile Page"""
-    search = CustomSerpApiWrapper
+    search = CustomSerpApiWrapper()
     res = search.run(f"{name}")
     return res
