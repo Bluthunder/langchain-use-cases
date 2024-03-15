@@ -11,6 +11,7 @@ langchain-openai = "*"
 requests = "*"
 langchainhub = "*"
 google-search-results = "*"
+flask = "*"
 
 [dev-packages]
 
