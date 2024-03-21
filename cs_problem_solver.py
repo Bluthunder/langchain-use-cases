@@ -24,6 +24,10 @@ if __name__ == '__main__':
 
     with open("result/codegen.py", "w") as code_file:
         code_file.write("# This is AI generated file !!!!")
-        code_file.writelines(res)
+        for line in res:
+            code_file.write(line + '\n')
+            # Optionally, print the data as it is written to the file
+            print(line)
+            # code_file.writelines(res)
 
 
