@@ -24,7 +24,8 @@ def generate_feature_file(user_story_text: str) -> str:
 
 def generate_automation_code(features: str) -> str:
     test_gen_template = '''
-    Given a .feature file{feature} generate test automation step definition with code written in js
+    Given a .feature file{feature} generate test automation step definition with code written in js for 
+    selenium page object model
     '''
 
     test_gen_prompt_template = PromptTemplate(

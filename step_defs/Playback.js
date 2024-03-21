@@ -1,62 +1,66 @@
 # Feature File 
 const { Given, When, Then } = require('cucumber');
+const { expect } = require('chai');
 
-Given('the user is on the OTT platform', function () {
-    // Write code here that turns the phrase above into concrete actions
+const OTTPage = require('../pageObjects/OTTPage');
+
+Given('the user is on the OTT platform', async () => {
+    // Code to navigate to the OTT platform
 });
 
-When('the user selects a video to play', function () {
-    // Write code here that turns the phrase above into concrete actions
+When('the user selects a movie to watch', async () => {
+    await OTTPage.selectMovie();
 });
 
-Then('the video should start playing successfully', function () {
-    // Write code here that turns the phrase above into concrete actions
+Then('the movie starts playing', async () => {
+    expect(await OTTPage.isMoviePlaying()).to.be.true;
 });
 
-When('the user pauses the video', function () {
-    // Write code here that turns the phrase above into concrete actions
+When('the user pauses the movie', async () => {
+    await OTTPage.pauseMovie();
 });
 
-Then('the video should pause at the current timestamp', function () {
-    // Write code here that turns the phrase above into concrete actions
+Then('the movie stops playing', async () => {
+    expect(await OTTPage.isMoviePlaying()).to.be.false;
 });
 
-When('the user resumes the video', function () {
-    // Write code here that turns the phrase above into concrete actions
+Given('the user has paused a movie on the OTT platform', async () => {
+    await OTTPage.pauseMovie();
 });
 
-Then('the video should continue playing from where it was paused', function () {
-    // Write code here that turns the phrase above into concrete actions
+When('the user resumes the movie', async () => {
+    await OTTPage.resumeMovie();
 });
 
-When('the user skips forward in the video', function () {
-    // Write code here that turns the phrase above into concrete actions
+Then('the movie continues playing from where it was paused', async () => {
+    expect(await OTTPage.isMoviePlaying()).to.be.true;
 });
 
-Then('the video should continue playing from the new timestamp', function () {
-    // Write code here that turns the phrase above into concrete actions
+When('the user skips ahead in the movie', async () => {
+    await OTTPage.skipAhead();
 });
 
-When('the user skips backward in the video', function () {
-    // Write code here that turns the phrase above into concrete actions
+Then('the movie starts playing from the skipped point', async () => {
+    expect(await OTTPage.getCurrentTime()).to.be.above(0);
 });
 
-Then('the video should continue playing from the new timestamp', function () {
-    // Write code here that turns the phrase above into concrete actions
+Given('the user has watched a movie on the OTT platform', async () => {
+    // Code to mark the movie as watched
 });
 
-When('the user changes the video quality', function () {
-    // Write code here that turns the phrase above into concrete actions
+When('the movie ends', async () => {
+    await OTTPage.endMovie();
 });
 
-Then('the video should continue playing in the new quality', function () {
-    // Write code here that turns the phrase above into concrete actions
+Then('the user is prompted to rate the movie', async () => {
+    expect(await OTTPage.isRatingPromptDisplayed()).to.be.true;
 });
 
-When('the user exits the video player', function () {
-    // Write code here that turns the phrase above into concrete actions
+When('the user exits the movie', async () => {
+    await OTTPage.exitMovie();
 });
 
-Then('the video should stop playing and the user should be redirected to the home screen', function () {
-    // Write code here that turns the phrase above into concrete actions
+Then('the movie stops playing and the user is taken back to the main menu', async () => {
+    expect(await OTTPage.isMoviePlaying()).to.be.false;
+    expect(await OTTPage.isMainMenuDisplayed()).to.be.true;
 });
