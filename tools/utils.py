@@ -15,6 +15,10 @@ def clean_response(response: str) -> str:
 
 
 def write_to_file(file_name: str, file_ext: str, input: str) -> None:
+    """
+
+    :rtype: object
+    """
     with open(file_name + '.' + file_ext, 'w') as file:
         file.write("# File \n")
         file.write(input)
