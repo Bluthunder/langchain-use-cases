@@ -16,7 +16,7 @@ if __name__ == '__main__':
     docs = text_splitter.split_documents(documents=pdf_document)
 
     embeddings = OpenAIEmbeddings()
-    print(embeddings[0])
+    # print(embeddings[0])
     vectorstore = FAISS.from_documents(docs, embeddings)
     vectorstore.save_local("faiss_bellman")
 

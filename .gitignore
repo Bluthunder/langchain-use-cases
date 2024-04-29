@@ -23,5 +23,8 @@ venv.bak/
 .spyproject
 
 .python-version
+.DS_Store
 
 .idea/*
+
+

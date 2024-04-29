@@ -16,6 +16,9 @@ pypdf = "*"
 langchain-community = "*"
 langchain-pinecone = "*"
 tiktoken = "*"
+streamlit = "*"
+beautifulsoup4 = "*"
+pinecone-client = "*"
 
 [dev-packages]
 
