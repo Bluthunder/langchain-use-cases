@@ -19,6 +19,7 @@ tiktoken = "*"
 streamlit = "*"
 beautifulsoup4 = "*"
 pinecone-client = "*"
+streamlit-chat = "*"
 
 [dev-packages]
 
