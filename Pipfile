@@ -12,6 +12,10 @@ requests = "*"
 langchainhub = "*"
 google-search-results = "*"
 flask = "*"
+pypdf = "*"
+langchain-community = "*"
+langchain-pinecone = "*"
+tiktoken = "*"
 
 [dev-packages]
 

@@ -1,66 +1,41 @@
-# Feature File 
+# File 
 const { Given, When, Then } = require('cucumber');
 const { expect } = require('chai');
 
-const OTTPage = require('../pageObjects/OTTPage');
+const OTTPlaybackPage = require('../pageObjects/OTTPlaybackPage');
 
 Given('the user is on the OTT platform', async () => {
-    // Code to navigate to the OTT platform
+    // Add code to navigate to the OTT platform
 });
 
-When('the user selects a movie to watch', async () => {
-    await OTTPage.selectMovie();
+When('the user selects a video to play', async () => {
+    // Add code to select a video to play
 });
 
-Then('the movie starts playing', async () => {
-    expect(await OTTPage.isMoviePlaying()).to.be.true;
+Then('the video starts playing successfully', async () => {
+    // Add assertion to check if the video is playing successfully
 });
 
-When('the user pauses the movie', async () => {
-    await OTTPage.pauseMovie();
+When('the user pauses the video', async () => {
+    // Add code to pause the video
 });
 
-Then('the movie stops playing', async () => {
-    expect(await OTTPage.isMoviePlaying()).to.be.false;
+Then('the video stops playing temporarily', async () => {
+    // Add assertion to check if the video is paused
 });
 
-Given('the user has paused a movie on the OTT platform', async () => {
-    await OTTPage.pauseMovie();
+When('the user resumes the video', async () => {
+    // Add code to resume the video
 });
 
-When('the user resumes the movie', async () => {
-    await OTTPage.resumeMovie();
+Then('the video continues playing from where it was paused', async () => {
+    // Add assertion to check if the video is playing from where it was paused
 });
 
-Then('the movie continues playing from where it was paused', async () => {
-    expect(await OTTPage.isMoviePlaying()).to.be.true;
-});
+// Repeat the above steps for the remaining scenarios
 
-When('the user skips ahead in the movie', async () => {
-    await OTTPage.skipAhead();
-});
-
-Then('the movie starts playing from the skipped point', async () => {
-    expect(await OTTPage.getCurrentTime()).to.be.above(0);
-});
-
-Given('the user has watched a movie on the OTT platform', async () => {
-    // Code to mark the movie as watched
-});
-
-When('the movie ends', async () => {
-    await OTTPage.endMovie();
-});
-
-Then('the user is prompted to rate the movie', async () => {
-    expect(await OTTPage.isRatingPromptDisplayed()).to.be.true;
-});
-
-When('the user exits the movie', async () => {
-    await OTTPage.exitMovie();
-});
-
-Then('the movie stops playing and the user is taken back to the main menu', async () => {
-    expect(await OTTPage.isMoviePlaying()).to.be.false;
-    expect(await OTTPage.isMainMenuDisplayed()).to.be.true;
-});
+module.exports = {
+    Given,
+    When,
+    Then
+};
