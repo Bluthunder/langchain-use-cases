@@ -1,41 +1,29 @@
 # File 
+Here is an example of how you can generate test automation step definitions with code in JavaScript for Selenium Page Object Model:
+
+```javascript
 const { Given, When, Then } = require('cucumber');
 const { expect } = require('chai');
+const { HomePage } = require('../pageObjects/HomePage');
+const { VideoPlayerPage } = require('../pageObjects/VideoPlayerPage');
 
-const OTTPlaybackPage = require('../pageObjects/OTTPlaybackPage');
-
-Given('the user is on the OTT platform', async () => {
-    // Add code to navigate to the OTT platform
+Given('the user is on the OTT platform', async function () {
+    this.homePage = new HomePage();
+    await this.homePage.open();
 });
 
-When('the user selects a video to play', async () => {
-    // Add code to select a video to play
+When('the user selects a video to play', async function () {
+    await this.homePage.selectVideo();
 });
 
-Then('the video starts playing successfully', async () => {
-    // Add assertion to check if the video is playing successfully
-});
-
-When('the user pauses the video', async () => {
-    // Add code to pause the video
-});
-
-Then('the video stops playing temporarily', async () => {
-    // Add assertion to check if the video is paused
-});
-
-When('the user resumes the video', async () => {
-    // Add code to resume the video
-});
-
-Then('the video continues playing from where it was paused', async () => {
-    // Add assertion to check if the video is playing from where it was paused
+Then('the video should start playing successfully', async function () {
+    const videoPlayerPage = new VideoPlayerPage();
+    const isPlaying = await videoPlayerPage.isPlaying();
+    expect(isPlaying).to.be.true;
 });
 
 // Repeat the above steps for the remaining scenarios
 
-module.exports = {
-    Given,
-    When,
-    Then
-};
+```
+
+In this code snippet, we are using Cucumber for writing BDD-style test scenarios. We have defined step definitions for each scenario and used Page Object Model to interact with the web elements on the pages. The `HomePage` and `VideoPlayerPage` classes represent the page objects for the home page and video player page respectively. The `expect` statement from Chai is used for assertions in the test scenarios.

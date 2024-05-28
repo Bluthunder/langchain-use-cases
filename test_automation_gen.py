@@ -89,9 +89,10 @@ if __name__ == '__main__':
 
     # RAG
     rag_prompt = """
-    You are javascript test automation developer. Reply with complete code for question below. 
+    You are javascript test automation developer. Reply with complete code for page object classes
+    {question}.
     Please follow the below guidelines 
-    1. Use context to understand the APIs and how to use it & apply.
+    1. Use context to understand code and create similar page objects.
     2. Write complete code with implementations according to the question
     3. In case of external dependencies use proper import statements
     
@@ -100,8 +101,6 @@ if __name__ == '__main__':
     
     Context:
     {context}
-    
-
     
     """
 

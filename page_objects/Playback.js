@@ -1,40 +1,29 @@
 # File 
-// OTTPlaybackPage.js
+To generate a page object class with all interaction methods implemented, you can create a separate file for each page object class and define the methods to interact with the web elements on that page. Here is an example of how you can create a page object class for the HomePage:
 
-const { By, Key, until } = require('selenium-webdriver');
+```javascript
+const { By, Key } = require('selenium-webdriver');
+const BasePage = require('./BasePage');
 
-class OTTPlaybackPage {
-    constructor(driver) {
-        this.driver = driver;
+class HomePage extends BasePage {
+    constructor() {
+        super();
+        this.url = 'https://example.com/home';
     }
 
-    async navigateToOTTPlatform() {
-        // Add code to navigate to the OTT platform
+    async open() {
+        await this.driver.get(this.url);
     }
 
-    async selectVideoToPlay() {
-        // Add code to select a video to play
-    }
-
-    async pauseVideo() {
-        // Add code to pause the video
-    }
-
-    async resumeVideo() {
-        // Add code to resume the video
-    }
-
-    async isVideoPlaying() {
-        // Add assertion to check if the video is playing successfully
-    }
-
-    async isVideoPaused() {
-        // Add assertion to check if the video is paused
-    }
-
-    async isVideoPlayingFromPaused() {
-        // Add assertion to check if the video is playing from where it was paused
+    async selectVideo() {
+        const videoElement = await this.driver.findElement(By.xpath('//div[@class="video"]'));
+        await videoElement.click();
     }
 }
 
-module.exports = OTTPlaybackPage;
+module.exports = { HomePage };
+```
+
+In this code snippet, we have created a `HomePage` class that extends a `BasePage` class. The `open()` method navigates to the URL of the home page, and the `selectVideo()` method interacts with the video element on the page by clicking on it.
+
+You can follow a similar approach to create a page object class for the `VideoPlayerPage` as well. By organizing your code in this way, you can easily maintain and reuse the interaction methods for different pages in your test automation framework.
